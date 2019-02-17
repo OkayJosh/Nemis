@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>{% block title %} NEIMS | Teacher | App {% endblock %}</title>
+  <style type="text/css">
+    .asteriskField {
+      display: none;
+    }
+
+    form .alert ul li {
+      list-style: none;
+    }
+
+    form .alert ul {
+      padding: 0;
+      margin: 0;
+    }
+  #mainNav {
+  min-height: 56px;
+  background-color: #000;
+  }
+
+#mainNav .navbar-toggler {
+  font-size: 80%;
+  padding: 0.75rem;
+  color: #64a190;
+  border: 1px solid #64a19d;
+}
+
+#mainNav .navbar-toggler:focus {
+  outline: none;
+}
+
+#mainNav .navbar-brand {
+  color: #64a190;
+  font-weight: 700;
+  padding: .9rem 0;
+}
+
+#mainNav .navbar-nav .nav-item:hover {
+  color: fade(white, 80%);
+  outline: none;
+  background-color: transparent;
+}
+
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    background-color: transparent;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+  }
+  #mainNav .navbar-brand {
+    padding: .5rem 0;
+    color: #64a190;
+  }
+  #mainNav .nav-link {
+    -webkit-transition: none;
+    transition: none;
+    padding: 2rem 1.5rem;
+    color: #64a190;
+  }
+  #mainNav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  #mainNav .nav-link:active {
+    color: white;
+  }
+  #mainNav.navbar-shrink {
+    background-color: #fff;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    color: #161616;
+  }
+  #mainNav.navbar-shrink .nav-link {
+    color: #161616;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 0.25rem solid transparent;
+  }
+  #mainNav.navbar-shrink .nav-link:hover {
+    color: #64a19d;
+  }
+  #mainNav.navbar-shrink .nav-link:active {
+    color: #467370;
+  }
+  #mainNav.navbar-shrink .nav-link.active {
+    color: #64a19d;
+    outline: none;
+    border-bottom: 0.25rem solid #64a19d;
+  }
+}
+
+.masthead {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616));
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.padhead{
+  padding: 5rem 0 0 0;
+}
+
+.masthead h1 {
+  font-family: 'Varela Round';
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.8rem;
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.masthead h2 {
+  max-width: 20rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .masthead h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    height: 100vh;
+    padding: 20em;
+  }
+  .masthead h1 {
+    font-size: 6.5rem;
+    line-height: 6.5rem;
+    letter-spacing: 0.8rem;
+  }
+  .masthead h2 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+  }
+}
+
+.btn {
+  -webkit-box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  padding: 1.25rem 2rem;
+  font-family: 'Varela Round';
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: .15rem;
+  border: 0;
+}
+
+.btn-primary {
+  background-color: #64a19d;
+}
+
+.btn-primary:hover {
+  background-color: #4f837f;
+}
+
+.btn-primary:focus {
+  background-color: #4f837f;
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: #467370 !important;
+}
+
+.about-section {
+  padding-top: 10rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(#161616), color-stop(75%, rgba(22, 22, 22, 0.9)), to(rgba(22, 22, 22, 0.8)));
+  background: linear-gradient(to bottom, #161616 0%, rgba(22, 22, 22, 0.9) 75%, rgba(22, 22, 22, 0.8) 100%);
+}
+
+.about-section p {
+  margin-bottom: 5rem;
+}
+
+.projects-section {
+  padding: 10rem 0;
+}
+
+.projects-section .featured-text {
+  padding: 2rem;
+}
+
+@media (min-width: 992px) {
+  .projects-section .featured-text {
+    padding: 0 0 0 2rem;
+    border-left: 0.5rem solid #64a19d;
+  }
+}
+
+.projects-section .project-text {
+  padding: 3rem;
+  font-size: 90%;
+}
+
+@media (min-width: 992px) {
+  .projects-section .project-text {
+    padding: 5rem;
+  }
+  .projects-section .project-text hr {
+    border-color: #64a19d;
+    border-width: .25rem;
+    width: 30%;
+  }
+}
+
+.signup-section {
+  padding: 10rem 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616));
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.signup-section .form-inline input {
+  -webkit-box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  padding: 1.25rem 2rem;
+  height: auto;
+  font-family: 'Varela Round';
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  border: 0;
+}
+
+.contact-section {
+  padding: 5rem 0 0;
+}
+
+.contact-section .card {
+  border: 0;
+  border-bottom: 0.25rem solid #64a19d;
+}
+
+.contact-section .card h4 {
+  font-size: 0.8rem;
+  font-family: 'Varela Round';
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+
+.contact-section .card hr {
+  border-color: #64a19d;
+  border-width: 0.25rem;
+  width: 3rem;
+}
+
+.contact-section .social {
+  margin-top: 5rem;
+}
+
+.contact-section .social a {
+  text-align: center;
+  height: 3rem;
+  width: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100%;
+  line-height: 3rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-section .social a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-section .social a:active {
+  color: #fff;
+}
+
+body {
+  font-family: 'Nunito';
+  letter-spacing: 0.0625em;
+}
+
+a {
+  color: #64a19d;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+  color: #3c6360;
+}
+
+.bg-black {
+  background-color: #161616 !important;
+}
+
+.bg-light {
+
+    background-color: #262d35 !important;
+
+}
+
+
+.bg-primary {
+  background-color: #64a19d !important;
+}
+
+.text-primary {
+  color: #64a19d !important;
+}
+
+.text-white-50 {
+	color: rgba(255,255,255,.5) !important;
+}
+
+footer {
+  color: rgba(255,255,255,.5) !important;
+  padding: 5rem 0;
+}
+/* Absolute Center Spinner */
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+    /* Transparent Overlay */
+ .loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+/* hide "loading..." text */
+font: 0/0 a;
+color: transparent;
+text-shadow: none;
+background-color: transparent;
+border: 0;
+}
+
+.loading:not(:required):after {
+content: '';
+display: block;
+font-size: 10px;
+width: 1em;
+height: 1em;
+margin-top: -0.5em;
+-webkit-animation: spinner 1500ms infinite linear;
+-moz-animation: spinner 1500ms infinite linear;
+-ms-animation: spinner 1500ms infinite linear;
+-o-animation: spinner 1500ms infinite linear;
+animation: spinner 1500ms infinite linear;
+border-radius: 0.5em;
+-webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+}
+@-moz-keyframes spinner {
+0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+}
+@-o-keyframes spinner {
+0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+}
+@keyframes spinner {
+0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+    }
+}
+
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">NG-NEMIS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Contact</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+          </li>
+          {% endif %}
+        </ul>
+        {% if user.is_authenticated %}
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ user.username }}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+              </div>
+            </li>
+          </ul>
+        {% else %}
+          <form class="form-inline my-2 my-lg-0">
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary">Log In</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary ml-2">Sign up</a>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <!-- Header -->
+  {% block header %}
+  {% endblock %}
+
+<div class="row" id="body-row" style="padding:6rem 0 0 0;">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar d-none d-md-block col-2" >
+        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group sticky-top sticky-offset">
+            <!-- Separator with title -->
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center">
+                <small>MAIN MENU</small>
+            </li>
+            <!-- /END Separator -->
+            <!-- Menu with submenu -->
+            <a href="{% url 'teacher' %}" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="" style="color:white;">Teacher</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <a href="" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="" style="color:white;">Post Teacher</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="menu-collapsed" style="color:white;">Employment</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="menu-collapsed" style="color:white;">Tranning</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="menu-collapsed" style="color:white;">Skills</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="menu-collapsed" style="color:white;">Appraisal</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+   
+            <!-- /END Separator -->
+        </ul>
+        <!-- List Group END-->
+    </div>
+    <!-- sidebar-container END -->
+
+    <!-- MAIN -->
+    <div></div>
+    <div class="col py-3" id="teacher" >
+
+        <h1>
+            Teacher Management
+            <small class="text-muted">Version 2.1</small>
+        </h1>
+        <div class="card">
+            <div class=" card-header form-inline my-2 my-lg-0">
+              <h4 class="card-header" >List of Teacher</h4>
+                <input class="form-control mr-sm-2"  type="text" placeholder="Search" v-model="search_term" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" v-on:click.prevent="getTeachers()">Search</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTeacherModal">ADD</button>
+              </div>
+            <div class="card-body">
+              <div class="col-sm-12">
+                      <div class="" >
+                        <table class="table ">
+                          <thead>
+                            <tr>
+                              <th scope="col">Name</th>
+                              <th scope="col">City</th>
+                              <th scope="col">Birthday</th>
+                              <th scope="col">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="teacher in teachers">
+                              <th scope="row">${teacher.last_name } ${teacher.first_name }</th>
+                              <td>${teacher.state }</td>
+                              <td>${teacher.date_of_birth}</td> 
+                              <td class="d-table-row">
+                                <div class="d-inline"><button class="btn btn-info d-inline p-2" v-on:click="getTeacher(teacher.id)">Edit</button></div>
+                                <div class="d-inline"><button class="btn btn-info d-inline p-2" v-on:click="setPost(teacher.id)">Post</button></div>
+                                <div class="d-inline"><button class="btn btn-info d-inline p-2" v-on:click="showTeacher(teacher.id)">Details</button></div>
+                               <!-- <div class="d-inline"><button class="btn btn-danger d-inline p-2" v-on:click="deleteTeacher(Teacher.id)">Delete</button></div>-->
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  <!-- Add Article Modal -->
+                  <div class="modal fade" id="addTeacherModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">ADD Teacher</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form v-on:submit.prevent="addTeacher()">
+                        <div class="modal-body">
+                            <div class="form-group">
+                              <label for="teacher_first_name">First Name</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_first_name"
+                                placeholder="Enter Teacher First Name"
+                                v-model="newTeacher.first_name"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_middle_name">Middle Name</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_middle_name"
+                                placeholder="Enter Teacher Middle Name"
+                                v-model="newTeacher.middle_name"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_last_name">Last Name</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_last_name"
+                                placeholder="Enter Teacher Last Name"
+                                v-model="newTeacher.last_name"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_address">Address</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_address"
+                                placeholder="Enter Teacher Address"
+                                v-model="newTeacher.address"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_city">City</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_city"
+                                placeholder="Enter Teacher City"
+                                v-model="newTeacher.city"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_state">State</label>
+                              <select
+                                name="state" 
+                                class="form-control"
+                                id="teacher_state"
+                                placeholder="Enter Teacher State"
+                                v-model="newTeacher.state"
+                                required="required" >
+                                <option value="ABU"  >Abuja</option>
+                                <option value="ABI"  >Abia</option>
+                                <option value="ADA"  >Adamawa</option>
+                                <option value="AKW"  >Akwa Ibom</option>
+                                <option value="ANA"  >Anambra</option>
+                                <option value="BAU"  >Bauchi</option>
+                                <option value="BAY"  >Bayelsa</option>
+                                <option value="BEN"  >Benue</option>
+                                <option value="BOR"  >Borno</option>
+                                <option value="CRO"  >Cross River</option>
+                                <option value="DEL"  >Delta</option>
+                                <option value="EBO"  >Ebonyi</option>
+                                <option value="ENU"  >Enugu</option>
+                                <option value="EDO"  >Edo</option>
+                                <option value="EKI"  >Ekiti</option>
+                                <option value="GOM"  >Gombe</option>
+                                <option value="IMO"  >Imo</option>
+                                <option value="JIG"  >Jigawa</option>
+                                <option value="KAD"  >Kaduna</option>
+                                <option value="KAN"  >Kano</option>
+                                <option value="KAT"  >Katsina</option>
+                                <option value="KEB"  >Kebbi</option>
+                                <option value="KOG"  >Kogi</option>    
+                                <option value="KWA"  >Kwara</option>
+                                <option value="LAG"  >Lagos</option>      
+                                <option value="NAS"  >Nasarawa</option>                        
+                                <option value="NIG"  >Niger</option>
+                                <option value="OGU"  >Ogun</option>
+                                <option value="OND"  >Ondo</option>
+                                <option value="OSU"  >Osun</option>
+                                <option value="OYO"  >Oyo</option>
+                                <option value="PLA"  >Plateau</option>
+                                <option value="RIV"  >Rivers</option>
+                                <option value="SOK"  >Sokoto</option>
+                                <option value="TAR"  >Taraba</option>
+                                <option value="YOB"  >Yobe</option>
+                                <option value="ZAM"  >Zamfara</option>
+                                </select>
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_birthday">Birthday</label>
+                              <input
+                                type="date"
+                                min="1960-01-01" max=""
+                                class="form-control"
+                                id="Teacher_birthday"
+                                placeholder="Enter Teacher date of birth"
+                                v-model="newTeacher.date_of_birth" >
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary m-progress" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="loading" v-if="loading===true">Loading&#8230;</div>
+                  </div>
+                  <!-- End of add Teacher modal -->
+                  <!-- Edit Teacher Modal -->
+                  <div class="modal fade" id="editTeacherModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">EDIT Teacher</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form v-on:submit.prevent="updateTeacher()">
+                        <div class="modal-body">
+                            <div class="form-group">
+                              <label for="teacher_first_name">First Name</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_first_name"
+                                placeholder="Enter Teacher First Name"
+                                v-model="currentTeacher.first_name"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_middle_name">Middle Name</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_middle_name"
+                                placeholder="Enter Teacher Middle Name"
+                                v-model="currentTeacher.middle_name"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_last_name">Last Name</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_last_name"
+                                placeholder="Enter Teacher Last Name"
+                                v-model="currentTeacher.last_name"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_address">Address</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_address"
+                                placeholder="Enter Teacher Address"
+                                v-model="currentTeacher.address"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_city">City</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="teacher_city"
+                                placeholder="Enter Teacher City"
+                                v-model="currentTeacher.city"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_state">City</label>
+                              <input
+                                type="choice"
+                                class="form-control"
+                                id="teacher_state"
+                                placeholder="Enter Teacher City"
+                                v-model="newTeacher.state"
+                                required="required" >
+                            </div>
+                          <div class="form-group">
+                              <label for="teacher_birthday">Birthday</label>
+                              <input
+                                type="date"
+                                min="1980-01-01" max="2016-12-31"
+                                class="form-control"
+                                id="teacher_birthday"
+                                placeholder="Enter Teacher date of birth"
+                                v-model="currentTeacher.date_of_birth" >
+                            </div>
+                          </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary m-progress" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="loading" v-if="loading===true">Loading&#8230;</div>
+                  </div>
+                  <!-- End of edit Teacher modal -->
+            </div>
+        </div>
+    </div>
+    <!-- Main Col END -->
+</div>
+
+  <section id ="about" class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">Built With BESDA in Mind</h2>
+          <p class="text-white-50"> The expectation is that NG-NEMIS will be used by the goverment to improve education system administation by providing information that will be used in strategic planning, resource allocation, monitoring and evaluation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center">
+    <div class="container">
+    Copyright &copy; NEIMS 2019
+    </div>
+  </footer>
+<!-- bootrtap js files -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- vue.js files -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+  <script type="text/javascript">
+    Vue.http.headers.common['X-CSRFToken'] = "{{ csrf_token }}";
+    new Vue({
+      el: '#teacher',
+      delimiters: ['${','}'],
+      data: {
+        teachers: [],
+        loading: true,
+        currentTeacher: {},
+        message: null,
+        newTeacher: { 'first_name': null, 'middle_name': null , 'last_name': null, 'address': null, 'city': null, 'date_of_birth': null,
+        'state': null },
+        search_term: '',
+      },
+      mounted: function() {
+        this.getTeachers();
+      },
+      methods: {
+        getTeachers: function() {
+          let api_url = '/api/teacher/';
+          if(this.search_term!==''||this.search_term!==null) {
+            api_url = `/api/teacher/?search=${this.search_term}`
+          }
+          this.loading = true;
+          this.$http.get(api_url)
+              .then((response) => {
+                this.teachers = response.data;
+                this.loading = false;
+              })
+              .catch((err) => {
+                this.loading = false;
+                console.log(err);
+              })
+        },
+        getTeacher: function(id) {
+          this.loading = true;
+          this.$http.get(`/api/teacher/${id}/`)
+              .then((response) => {
+                this.currentTeacher = response.data;
+                $("#editTeacherModal").modal('show');
+                this.loading = false;
+              })
+              .catch((err) => {
+                this.loading = false;
+                console.log(err);
+              })
+        },
+        addTeacher: function() {
+          this.loading = true;
+          this.$http.post('/api/teacher/',this.newTeacher)
+              .then((response) => {
+                this.loading = false;
+                this.getTeachers();
+              })
+              .catch((err) => {
+                this.loading = false;
+                console.log(err);
+              })
+        },
+        updateTeacher: function() {
+          this.loading = true;
+          this.$http.put(`/api/teacher/${this.currentTeacher.id}/`, this.currentTeacher)
+              .then((response) => {
+                this.loading = false;
+                this.currentTeacher = response.data;
+                this.getTeachers();
+              })
+              .catch((err) => {
+                this.loading = false;
+                console.log(err);
+              })
+        },
+        deleteTeacher: function(id) {
+          this.loading = true;
+          this.$http.delete(`/api/teacher/${id}/`)
+              .then((response) => {
+                this.loading = false;
+                this.getTeachers();
+              })
+              .catch((err) => {
+                this.loading = false;
+                console.log(err);
+              })
+        }
+      }
+    });
+  </script>
+</body>
+</html>
