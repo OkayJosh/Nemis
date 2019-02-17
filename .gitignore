@@ -2,3 +2,4 @@ __pycache__
 migrations
 sent_emails
 db.sqlite3
+/banana
