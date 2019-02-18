@@ -1,9 +1,10 @@
 from django.db import models
 
 from utils.utils import CreationModificationDateMixin, UrlMixin, DateMixin, no_future
-
+from django.contrib.auth.models import User
 
 class Project(UrlMixin, CreationModificationDateMixin, DateMixin):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField( max_length= 200)
     date_of_approval = models.DateField()
     details = models.TextField()

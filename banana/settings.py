@@ -39,14 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #installed app
     'crispy_forms',
-    'banana.login',
     'rest_framework',
     #native app
     'student',
     'teacher',
     'project',
     'asset',
-    'school'
+    'school',
+    'login',
 ]
 
 MIDDLEWARE = [

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .routers import router
-from banana.login import views
+from login import views
 from django.views.generic import TemplateView
 
 urlpatterns = [

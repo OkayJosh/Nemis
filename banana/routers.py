@@ -4,6 +4,7 @@ from teacher.viewsets import TeacherViewSet, PostViewSet, EmploymentViewSet, InH
 from school.viewsets import SchoolViewSet, IncidentViewSet, Extra_CurricularViewSet
 from project.viewsets import ProjectViewSet, SubProjectViewSet, MembersViewSet
 from asset.viewsets import AssetViewSet
+from login.viewsets import UserViewSet, GroupViewSet
 
 router = routers.DefaultRouter()
 
@@ -31,3 +32,6 @@ router.register(r'asset', AssetViewSet)
 router.register(r'school', SchoolViewSet)
 router.register(r'incident', IncidentViewSet)
 router.register(r'curriculum', Extra_CurricularViewSet)
+
+router.register(r'user', UserViewSet)
+router.register(r'group', GroupViewSet)

@@ -1,34 +1,26 @@
 from django.db import models
 from utils.models import CreationModificationDateMixin, UrlMixin, DateMixin, no_future
 
-from teacher.models import STATE_CHOICES
-# teacher model was imported to have access to state choices
-
-#from school.models import School
-# institution model was imported to link student to istitution as well as to have access to ministries of education
-
+from login.models import GeneralAdminProfile
+from school.models import School
+from django.contrib.auth.models import User
 
 
 class Student(UrlMixin, CreationModificationDateMixin, DateMixin ):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=100)
     middle_name = models.CharField( max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=200, default='address')
     city = models.CharField(max_length=100, default='city')
-    state = models.CharField(max_length=20, choices=STATE_CHOICES, null=True)
+    state = models.CharField(max_length=20, null=True)
     date_of_birth = models.DateField(blank=True, null=True, validators=[no_future])
-    #belongs_to =models.CharField(max_length=10, choices=MIN_EDU, null=True)
-
-
-    academic_text = models.TextField(blank=True,null=True)
-
-    moral_text = models.TextField(blank=True,null=True)
 
     def __str__(self):
         return 'FGN/%s' % (self.id)
 
 class Book(UrlMixin, CreationModificationDateMixin, DateMixin):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True, blank=True)
     name_of_book = models.CharField(max_length=255)
 
     def __str__(self):
@@ -36,7 +28,7 @@ class Book(UrlMixin, CreationModificationDateMixin, DateMixin):
 
 
 class Literacy(UrlMixin, CreationModificationDateMixin, DateMixin):
-    student = models.OneToOneField(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True, blank=True)
     english_literacy = models.CharField(max_length=255)
     numeracy = models.CharField(max_length=255)
 
@@ -80,7 +72,7 @@ class Appraisal(UrlMixin, CreationModificationDateMixin, DateMixin):
 
 class Posting(UrlMixin, CreationModificationDateMixin, DateMixin):
     student = models.OneToOneField(Student, on_delete=models.CASCADE)
-    #school = models.OneToOneField(School ,on_delete=models.CASCADE, null= True)
+    school = models.ForeignKey(School ,on_delete=models.CASCADE, null= True, related_name='studentPosting', blank=True)
     date_of_posting = models.DateField("Date of Posting", validators=[no_future])
 
     def __str__(self):

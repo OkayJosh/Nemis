@@ -1,22 +1,15 @@
 from django.db import models
 from utils.models import CreationModificationDateMixin, UrlMixin, DateMixin, no_future
+from django.contrib.auth.models import User
 
-from teacher.models import Teacher, STATE_CHOICES
-from student.models import Student
-from asset.models import Asset
-from project.models import Project
 
 class School(CreationModificationDateMixin, UrlMixin, DateMixin):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=100)
-    state = models.CharField(max_length=20, choices=STATE_CHOICES)
+    state = models.CharField(max_length=20, null=True)
     date_of_creation = models.DateField( null=True, validators=[no_future])
-    #A school has many teachers, students, assets, and projets
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, blank=True, null=True)
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, blank=True, null=True)
-    asset = models.ForeignKey(Asset, on_delete=models.CASCADE, blank=True, null=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return '%s' % (self.name)
