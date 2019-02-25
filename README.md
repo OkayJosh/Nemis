@@ -1,37 +1,65 @@
-## Welcome to GitHub Pages
+## Welcome to NEMIS
 
-You can use the [editor on GitHub](https://github.com/OkayJosh/Nemis/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Better Education Service Delivery [editor on GitHub]# Django setup
+> Make sure you have django install on your system else else [django](https://django.org).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+```bash
+#This is the compulsory
+pip3 install django
 
-### Markdown
+```
+> Make sure you install djangorestframework
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+```bash
+#This enable us to use django as a backend to power our application
+pip3 install djagorestframework
 
-```markdown
-Syntax highlighted code block
+```
+> Then you run migrations like so:
 
-# Header 1
-## Header 2
-### Header 3
+```bash
+# making migrations
+python3 manage.py makemigrations
 
-- Bulleted
-- List
+python3 manage.py migrate
 
-1. Numbered
-2. List
+```
+> Creating a super user and follow the prompt
 
-**Bold** and _Italic_ and `Code` text
+```bash
+#creating a super user to login from 127.0.0.1:8000/admin
+python3 manage.py createsuperuser
 
-[Link](url) and ![Image](src)
+```
+> Running the application
+
+```bash 
+#running the server at port 8000
+python3 manage.py runserver
+
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/OkayJosh/Nemis/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+# Vue for Frontend
 
-### Support or Contact
+> Make sure you have vue-cli installed [Vue](https://vuejs.org/)
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Setup
+
+``` bash
+changing directory
+cd frontend 
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run serve
+
+```
+## Finally
+> Both servers must be running 
+
+## Built with
+- [Vue](https://vuejs.org/) - A progressive JavaScript framework
+- [django](https://django.org/) - The python webframework for developers with a deadline
