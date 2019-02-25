@@ -1,7 +1,7 @@
 ## Welcome to NEMIS
 
 Better Education Service Delivery Django setup
-> Make sure you have django install on your system else [django](https://django.org).
+> Make sure you have django install on your system else [django](https://docs.djangoproject.com/en/2.1/).
 
 ```bash
 #This is the foundation
@@ -43,7 +43,7 @@ python3 manage.py runserver
 
 # Vue for Frontend
 
-> Make sure you have vue-cli installed [Vue](https://vuejs.org/)
+> vue-cli setup
 
 ## Setup
 
