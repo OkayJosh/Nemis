@@ -1,10 +1,10 @@
 ## Welcome to NEMIS
 
-Better Education Service Delivery [editor on GitHub]# Django setup
-> Make sure you have django install on your system else else [django](https://django.org).
+Better Education Service Delivery Django setup
+> Make sure you have django install on your system else [django](https://django.org).
 
 ```bash
-#This is the compulsory
+#This is the foundation
 pip3 install django
 
 ```
@@ -12,7 +12,7 @@ pip3 install django
 
 ```bash
 #This enable us to use django as a backend to power our application
-pip3 install djagorestframework
+pip3 install djangorestframework
 
 ```
 > Then you run migrations like so:
