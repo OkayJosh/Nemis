@@ -15,6 +15,13 @@ pip3 install django
 pip3 install djangorestframework
 
 ```
+> Make sure you install crispy_form
+
+```bash
+#This enable us to use django as a backend to power our application
+pip3 install django-crispy-form
+
+```
 > Then you run migrations like so:
 
 ```bash
