@@ -5,11 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-def home(request):
-    return render(request, 'base.html')
-
-
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -25,7 +20,7 @@ def signup(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dasboard/dashboard.html')
+    return render(request, 'login/dashboard/dashboard.html')
 
 
 # class SecretPage(LoginRequiredMixin, TemplateView):

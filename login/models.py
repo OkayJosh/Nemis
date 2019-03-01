@@ -6,7 +6,11 @@ from school.models import School
 
 class GeneralAdminProfile(UrlMixin, CreationModificationDateMixin, DateMixin):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    category = models.CharField(max_length=100, blank=True)
+    pics = models.ImageField(default='default')
+
+    def __str__(self):
+        return self.user.username + ' Profile'
+    
 
 
 class SupervisorAdminProfile(UrlMixin, CreationModificationDateMixin, DateMixin):
