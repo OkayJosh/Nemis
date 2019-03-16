@@ -1,29 +1,23 @@
-{% extends 'base.html' %}
-
-{% load crispy_forms_tags %}
-<!-- the header block modified -->
-{% block header %}
-{% endblock %}
+{% extends 'login/base.html' %}
 
 
 {% block content %}
-  <div class="row justify-content-center  padhead">
-    <div class="col-6 padhead">
+  <div class="row justify-content-center  mt-5 mb-5">
+    <div class="col-5">
       <div class="card">
-        <div class="card-body">
-          <h2>Log in</h2>
-          <form method="post" novalidate style="padding: 2rem 2rem 2rem 10rem;">
+      <div class="card-header"><h2>Login</h2></div>
+        <div class="card-body mt-3">
+          <form method="post" novalidate style="padding: 0rem 0rem 2rem 5rem;">
             {% csrf_token %}
-            {{ form|crispy }}
-            </div class="padhead">
-            <button type="submit" class="btn btn-primary" >Log in</button>
-            <a href="{% url 'password_reset' %}" class="btn btn-link">Forgot your password?</a></div>
+            {{ form }}
+            <div class="mt-3">
+              <button type="submit" class="btn btn-success" >Login</button>
+              <a href="" class="btn btn-success">Forgot your password?</a></div>
+            </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-{% endblock %}
-
-{% block project %}
-{% endblock %}
+{% endblock content %}

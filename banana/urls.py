@@ -15,31 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .routers import router
-from login import views
+# from .routers import router
+# from . import login
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='login/base.html'), name='home'),
-    path('signup/', views.signup, name='signup'),
-    path('dashboard/', views.dashboard, name='dashboard'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('api/', include(router.urls)),
-    path('student', TemplateView.as_view(template_name='student/index.html'), name='student'),
-    path('teacher', TemplateView.as_view(template_name='teacher/index.html'), name='teacher'),
-    path('project', TemplateView.as_view(template_name='project/index.html'), name='project'),
-    path('post', TemplateView.as_view(template_name='post/index.html'), name='post'),
-    path('asset', TemplateView.as_view(template_name='asset/index.html'), name='asset'),
-    path('school', TemplateView.as_view(template_name='school/index.html'), name='school'),
+    path('', include('login.urls')),
     path('admin/', admin.site.urls),
-
-
-# accounts/login/ [name='login']
-# accounts/logout/ [name='logout']
-# accounts/password_change/ [name='password_change']
-# accounts/password_change/done/ [name='password_change_done']
-# accounts/password_reset/ [name='password_reset']
-# accounts/password_reset/done/ [name='password_reset_done']
-# accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
-# accounts/reset/done/ [name='password_reset_complete']
 ]

@@ -1,6 +1,6 @@
 from django.db import models
 
-from utils.utils import CreationModificationDateMixin, UrlMixin, DateMixin, no_future
+from utils.models import CreationModificationDateMixin, UrlMixin, DateMixin, no_future
 from django.contrib.auth.models import User
 
 class Project(UrlMixin, CreationModificationDateMixin, DateMixin):
@@ -8,7 +8,7 @@ class Project(UrlMixin, CreationModificationDateMixin, DateMixin):
     name = models.CharField( max_length= 200)
     date_of_approval = models.DateField()
     details = models.TextField()
-    appraisal = models.IntegerField()
+    funds = models.IntegerField()
     close_out_date = models.DateField()
 
 
@@ -20,7 +20,7 @@ class SubProject (UrlMixin, CreationModificationDateMixin, DateMixin ):
     name = models.CharField(max_length=200)
     date_of_approval = models.DateField()
     details = models.TextField()
-    appraisal = models.IntegerField()
+    funds = models.IntegerField()
     close_out_date = models.DateField()
 
     def __str__(self):
@@ -34,3 +34,6 @@ class Members(UrlMixin, CreationModificationDateMixin, DateMixin):
     date_of_birth = models.DateField()
     position_held = models.CharField(max_length=100)
     details = models.TextField()
+
+    def __str__(self):
+        return 'Member %s' % (self.name)

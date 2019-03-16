@@ -14,3 +14,8 @@ class Asset(UrlMixin, CreationModificationDateMixin, DateMixin):
     state = models.CharField(max_length=20, null=True)
     value = models.IntegerField()
     expired_date = models.DateField()
+
+class Supervision(UrlMixin, CreationModificationDateMixin, DateMixin):
+    Name = models.CharField("Name of Supervision", max_length=200, null=True)
+    purpose = models.CharField("Purpose of Supervision", max_length=200, null=True)
+    details = models.CharField("Details of Supervision", max_length=200, null=True)
