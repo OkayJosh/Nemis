@@ -21,7 +21,7 @@ teacher/__pycache__/
 teacher/migrations/
 
 sent_emails/
-
+vnemis/
 
 db.sqlite3
 
