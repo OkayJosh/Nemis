@@ -19,6 +19,7 @@ class Incident(CreationModificationDateMixin, UrlMixin, DateMixin):
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     details = models.TextField()
+    action_taken = models.TextField()
 
     def __str__(self):
         return '%s' % (self.title)
@@ -31,3 +32,26 @@ class Extra_Curricular(CreationModificationDateMixin, UrlMixin, DateMixin):
 
     def __str__(self):
         return '%s' % (self.title)
+    
+  class Asset(CreationModificationDateMixin, UrlMixin, DateMixin):
+
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    type = models.CharField(max_length=200)
+    nature = models.CharField(max_length=200)
+    description= models.TextField()
+    value = models.CharField(max_length=200)
+    date_of_acquisition = models.DateField()
+
+    def __str__(self):
+        return '%s' % (self.nature)
+
+ class AssetCondition (CreationModificationDateMixin, UrlMixin, DateMixin):
+
+    asset = models.ForeignKey(Asset, on_delete=models.CASCADE)
+    assesor = models.CharField(max_length=200)
+    condition = models.TextField()
+    remark = models.TextField()
+    
+
+    def __str__(self):
+        return '%s' % (self.nature)
