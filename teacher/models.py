@@ -10,9 +10,12 @@ from utils.utils import CreationModificationDateMixin, UrlMixin, DateMixin, no_f
 
 class Teacher(UrlMixin, CreationModificationDateMixin, DateMixin ):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    first_name = models.CharField(max_length=100)
-    middle_name = models.CharField( max_length=100)
-    last_name = models.CharField(max_length=100)
+    government_code = models.CharField(max_length=100)
+    identification_number = models.CharField(max_length=100)
+    full_name = models.CharField(max_length=100)
+    gender = models.CharField(max_length=100)
+    telphone_number = models.IntegerField()
+    email_address = models.EmailField()
     address = models.CharField(max_length=200, default='address')
     city = models.CharField(max_length=100, default='city')
     state_origin = models.CharField(max_length=20, null=True)
@@ -20,12 +23,18 @@ class Teacher(UrlMixin, CreationModificationDateMixin, DateMixin ):
     local_gov_origin = models.CharField(max_length=20, null=True)
     local_gov_residence = models.CharField(max_length=20, null=True)
     date_of_birth = models.DateField(blank=True, null=True, validators=[no_future])
+    
+    reason_for_change_of_employment = models.CharField()
+    
+    #previous employer details
+    name_of_employer = models.CharField(max_length=100, null=True)
+    date_of_registration = models.CharField(max_length=100, null=True)
+    last_position_held = models.CharField(max_length=20, null=True)
 
-    # picture = models.ImageField(("Picture"),
-    #             upload_to=upload_to,blank=True,null=True)
+     picture = models.ImageField(("Picture"), upload_to=upload_to,blank=True,null=True)
 
     def __str__(self):
-        return '%s %s %s' % (self.last_name, self.first_name, self.middle_name)
+        return full_name
 
 
 class Employment(UrlMixin, CreationModificationDateMixin, DateMixin ):
